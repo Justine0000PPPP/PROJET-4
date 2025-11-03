@@ -217,8 +217,10 @@
                     </div>
                 </div>
             </div>`);
-    },
-    showItemTags(gallery, position, tags) {
+          },
+
+// qui gere les filtre 
+          showItemTags(gallery, position, tags) {
       var tagItems =
         '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">Tous</span></li>';
       $.each(tags, function(index, value) {
@@ -235,6 +237,8 @@
         console.error(`Unknown tags position: ${position}`);
       }
     },
+
+
     filterByTag() {
       if ($(this).hasClass("active-tag")) {
         return;
