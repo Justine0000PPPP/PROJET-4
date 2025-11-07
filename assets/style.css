@@ -354,3 +354,14 @@ input[type="submit"] {
 	}
 }
 
+/* rajout  */
+.tags-bar .nav-link {
+    color: #000;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.tags-bar .nav-link.active-tag {
+    color: #fff;
+    background-color: #BEB45A;
+}

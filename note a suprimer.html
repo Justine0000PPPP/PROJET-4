@@ -1,0 +1,80 @@
+le problaime 1 vien du fais que :
+Les éléments du filtre sont générés par JS (<span class="nav-link" data-images-toggle="...">).
+
+Par défaut, le premier filtre “Tous” a à la fois active et active-tag, mais les autres filtres n’ont que active-tag.
+
+Sur les clics suivants, la classe active-tag est gérée mais pas le style CSS associé.
+
+En résumé :
+Le problème vient du mauvais alignement entre les classes CSS et JS. JS utilise active-tag mais CSS cible active de Bootstrap.
+  
+  
+
+Problaime 2;
+
+Quand on cliquais sur les flèches « < » ou « > » dans la lightbox (la fenêtre d’image agrandie),
+ l’image ne changeait pas.
+
+Pourquoi  :
+
+Le souci venait du code des deux fonctions :
+
+prevImage() (image précédente)
+
+nextImage() (image suivante)
+
+Dans ces fonctions, le code disait en gros ceci :
+
+next = imagesCollection[index] || imagesCollection[0];
+$(".lightboxImage").attr("src", $(next).attr("src"));
+
+Cela voulait dire :
+
+« Montre l’image à la position actuelle »
+au lieu de dire
+« Montre l’image suivante ou précédente ».
+
+ Résultat :
+
+Quand on cliquais sur une flèche,  le script rechargeait la même image, donc rien ne bougeait à l’écran.
+
+La cause exacte :
+
+Le développeur du plugin n’a jamais changé la variable index avant d’afficher l’image suivante.
+Il ne faisait que reprendre le même numéro de l’image actuelle.
+C’est une erreur logique, pas une erreur de syntaxe.
+
+Ssolution :
+
+Pour la flèche gauche (précédente) :
+
+    prevImage()
+    avent 
+         imagesCollection[index] ||
+         imagesCollection[imagesCollection.length - 1];
+       $(".lightboxImage").attr("src", $(next).attr("src"));
+    apres 
+      let prevIndex = index === 0 ? imagesCollection.length - 1 : index - 1;
+      $(".lightboxImage").attr("src", $(imagesCollection[prevIndex]).attr("src"));
+
+
+
+
+ si on est sur la première image, on revient à la dernière sinon, on va à l’image juste avant.
+
+Pour la flèche droite (suivante) :
+
+    nextImage() 
+    avent 
+       next = imagesCollection[index] || imagesCollection[0];
+       $(".lightboxImage").attr("src", $(next).attr("src"));
+       Aller à l'image suivante (en boucle)
+    apres 
+      let nextIndex = (index + 1) % imagesCollection.length;
+      $(".lightboxImage").attr("src", $(imagesCollection[nextIndex]).attr("src"));
+
+
+ on passe à l’image suivante
+→ si on est à la dernière, on revient à la première.
+
+
