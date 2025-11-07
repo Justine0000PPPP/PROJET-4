@@ -199,9 +199,6 @@
         }
       });
 
-      // next = imagesCollection[index] || imagesCollection[0];
-      // $(".lightboxImage").attr("src", $(next).attr("src"));
-      // Aller à l'image suivante (en boucle)
       let nextIndex = (index + 1) % imagesCollection.length;
       $(".lightboxImage").attr("src", $(imagesCollection[nextIndex]).attr("src"));
     },
@@ -272,6 +269,23 @@
             .show(300);
         }
       });
+    function setupGalleryFilters() {
+  const filterButtons = document.querySelectorAll('.tags-bar .nav-link');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      //  Enlève la classe active-tag à tous les boutons
+      filterButtons.forEach(btn => btn.classList.remove('active-tag'));
+
+      //️⃣ Ajoute la classe active-tag au bouton cliqué
+      button.classList.add('active-tag');
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupGalleryFilters);
+
     }
+    
   };
 })(jQuery);

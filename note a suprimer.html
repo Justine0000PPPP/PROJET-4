@@ -1,14 +1,46 @@
-le problaime 1 vien du fais que :
-Les éléments du filtre sont générés par JS (<span class="nav-link" data-images-toggle="...">).
+problaime 1 : 
+Énoncé du problème
 
-Par défaut, le premier filtre “Tous” a à la fois active et active-tag, mais les autres filtres n’ont que active-tag.
+Lorsque l'utilisateur clique sur un nom de filtre (par exemple “Mariage”, “Portrait”, ou “Tous”),
+le filtre s'applique bien  les photos s'affichent correctement 
+mais le bouton du filtre actif ne change pas de couleur.
+L'utilisateur ne voit donc pas quel filtre est sélectionné.
 
-Sur les clics suivants, la classe active-tag est gérée mais pas le style CSS associé.
+Origine du problème
 
-En résumé :
-Le problème vient du mauvais alignement entre les classes CSS et JS. JS utilise active-tag mais CSS cible active de Bootstrap.
-  
-  
+Le plugin mauGallery gère déjà la logique de filtrage (cacher/montrer les images selon le tag),
+mais il n’ajoutait pas systématiquement la classe CSS indiquant quel bouton est actif.
+
+La classe CSS .active-tag existe bien dans le code (elle change la couleur du bouton actif).
+
+Cependant, aucune fonction JavaScript ne mettait à jour cette classe au clic.
+Résultat : le style du bouton actif ne s’affichait jamais.
+
+Solution apportée
+
+Ajouté une fonction JavaScript appelée setupGalleryFilters().
+Elle écoute les clics sur chaque bouton de filtre et met à jour leur apparence.
+
+    function setupGalleryFilters() {
+  const filterButtons = document.querySelectorAll('.tags-bar .nav-link');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      //  Enlève la classe active-tag à tous les boutons
+      filterButtons.forEach(btn => btn.classList.remove('active-tag'));
+
+      //️⃣ Ajoute la classe active-tag au bouton cliqué
+      button.classList.add('active-tag');
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupGalleryFilters);
+
+
+
+
+
 
 Problaime 2;
 
