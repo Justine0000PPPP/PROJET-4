@@ -9,12 +9,12 @@ L'utilisateur ne voit donc pas quel filtre est sélectionné.
 Origine du problème
 
 Le plugin mauGallery gère déjà la logique de filtrage (cacher/montrer les images selon le tag),
-mais il n’ajoutait pas systématiquement la classe CSS indiquant quel bouton est actif.
+mais il n'ajoutait pas systématiquement la classe CSS indiquant quel bouton est actif.
 
 La classe CSS .active-tag existe bien dans le code (elle change la couleur du bouton actif).
 
 Cependant, aucune fonction JavaScript ne mettait à jour cette classe au clic.
-Résultat : le style du bouton actif ne s’affichait jamais.
+Résultat : le style du bouton actif ne s'affichait jamais.
 
 Solution apportée
 
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', setupGalleryFilters);
 
 Problaime 2;
 
-Quand on cliquais sur les flèches « < » ou « > » dans la lightbox (la fenêtre d’image agrandie),
- l’image ne changeait pas.
+Quand on cliquais sur les flèches «  » ou « > » dans la lightbox (la fenêtre d’image agrandie),
+ l'image ne changeait pas.
 
 Pourquoi  :
 
@@ -62,9 +62,9 @@ $(".lightboxImage").attr("src", $(next).attr("src"));
 
 Cela voulait dire :
 
-« Montre l’image à la position actuelle »
+« Montre l'image à la position actuelle »
 au lieu de dire
-« Montre l’image suivante ou précédente ».
+« Montre l'image suivante ou précédente ».
 
  Résultat :
 
@@ -106,7 +106,5 @@ Pour la flèche droite (suivante) :
       $(".lightboxImage").attr("src", $(imagesCollection[nextIndex]).attr("src"));
 
 
- on passe à l’image suivante
+ on passe à l'image suivante
 → si on est à la dernière, on revient à la première.
-
-
