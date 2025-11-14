@@ -1,16 +1,26 @@
+Performence 
+
 
 Render blocking requests Est savings of 3,450 ms:
 
 action a prendre :
-1. Ajouter defer aux  <script> 
+1. Ajouter defer aux  <script>  fais 
 
 2. Ajoute un preload pour les polices Google Fonts 
+ajout de la ligne dansle header 
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap">
+Cette ligne dit au navigateur :
+
+"Cette police est importante. Charge-la immédiatement, avant le reste."
+pour charger la police en prioriter via urls deja existente plus haut 
+
 
 3. Combiner et minifie les fichiers CSS et bootstrap.css si possible r style.css et bootstrap.css si possible.
 Utilisation de ses site :
 https://cssminifier.com
+a faire a la toute fin du projet pour pas cree de confusion pas possible de combiner les deux fichier css en un a cause de boostrap 
 
-https://www.toptal.com/developers/cssminifier
+
 
 
 
@@ -63,8 +73,7 @@ Solution : il faut enlever ce paramètre sur cette image uniquement.
 
 Avant :
 
-<img src="/slider/ryoji-iwa.jpg" class="d-block w-100" loading="lazy" alt="Image principale">
-
+<   img src="./assets/images/slider/ryoji-iwata-wUZjnOv7t0g-unsplash.jpg" class="d-block w-100" alt="...">
 
 Après :
 
@@ -72,13 +81,26 @@ Après :
 
 
 Résultat : le navigateur charge cette image tout de suite, dès le début.
-
-2. S’assurer que l’image est bien présente dans le HTML au chargement
-
-Problème : si ton image est ajoutée par JavaScript (ex. un slider ou carrousel), le navigateur ne la “voit” pas tout de suite.
-
-Solution : mettre la première image du carrousel directement dans le HTML.
+fais 
 
 
-deginer point rouge donner par lhit house a voir si il nes pas resolut une fois le reste fais 
--Network dependency tree
+Accessibility
+-Image elements do not have [alt] attributes  
+fais 
+
+Document doesn't have a <title> element
+    
+    <title>Portfolio de Nina Carducci - Photographe</title>
+    fais 
+
+Form elements do not have associated labels
+ajout de for sur les label pour pouvoir bien les lier 
+fais 
+
+
+Links do not have a discernible name
+metre du texste pour indiquer au lecteur decrent plus alt 
+fais 
+
+Background and foreground colors do not have a sufficient contrast ratio.
+

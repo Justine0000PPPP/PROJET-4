@@ -362,6 +362,56 @@ input[type="submit"] {
 }
 
 .tags-bar .nav-link.active-tag {
-    color: #fff;
+    color: #000000;
     background-color: #BEB45A;
+}
+
+ /* css du footer  */
+ footer {
+    background-color: #2b2b2b;      /* gris foncé */
+    padding: 40px 20px;
+    color: white;                   /* texte blanc */
+    font-family: Arial, sans-serif;
+}
+
+/* Conteneur du contenu LocalBusiness */
+footer div[itemtype="https://schema.org/LocalBusiness"] {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* deux colonnes */
+    gap: 20px;
+}
+
+/* Style général des éléments */
+footer span,
+footer time {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* Nom de l'entreprise (va en haut à gauche) */
+footer span[itemprop="name"] {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Colonne 1 : adresse + nom */
+footer div[itemprop="address"] {
+    margin-bottom: 10px;
+}
+
+/* Colonne 2 : téléphone + horaires */
+footer div:last-child {
+    margin-bottom: 10px;
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+    footer div[itemtype="https://schema.org/LocalBusiness"] {
+        grid-template-columns: 1fr; /* une seule colonne sur mobile */
+        text-align: center;
+    }
 }
