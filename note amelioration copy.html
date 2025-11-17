@@ -61,6 +61,7 @@ URL (chemin du fichier)	Taille	Économie estimée	Détails
 /portraits/ade-tunji-….jpg	979 KiB	857 KiB	idem
 /entreprise/jason-goo….jpg	697 KiB	630 KiB	idem
 
+sit utiliser : https://to.imagestool.com/fr/
 
 -LCP request discovery
 
@@ -82,6 +83,29 @@ Après :
 
 Résultat : le navigateur charge cette image tout de suite, dès le début.
 fais 
+
+Render blocking requests Est savings of 330 ms
+dansle hmtl remplacer 
+<link rel="stylesheet" href="./assets/bootstrap/bootstrap.css">
+par 
+<link rel="preload" href="./assets/bootstrap/bootstrap.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="./assets/bootstrap/bootstrap.css"></noscript>
+et 
+<link rel="stylesheet" href="./assets/style.css">
+par 
+<link rel="preload" href="./assets/style.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="./assets/style.css"></noscript>
+pour eviter le retard  de 300 ms ou plus.
+au chargemnt de la page 
+
+
+
+
+
+
+
+
+
 
 
 Accessibility
