@@ -164,7 +164,7 @@
       let prevIndex = index === 0 ? imagesCollection.length - 1 : index - 1;
       $(".lightboxImage").attr("src", $(imagesCollection[prevIndex]).attr("src"));
     },
-
+// probleme de fleche
     nextImage() {
       let activeImage = null;
       $("img.gallery-item").each(function() {
